@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proxy Sync | Premium Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Login Card -->
+        <div id="login-view" class="glass-card animate-fade-in">
+            <h1>Welcome Back</h1>
+            <p class="subtitle">Enter your Apigee credentials to begin</p>
+
+            <div class="form-group">
+                <label for="username">Apigee Username</label>
+                <input type="text" id="username" value="readonly@ext.icici.bank.in" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" value="Apigee@2028" required>
+            </div>
+
+            <button id="login-btn">
+                <span>Login Securely</span>
+                <div id="login-loader" class="loader hidden"></div>
+            </button>
+
+            <p id="login-error" class="subtitle" style="color: #ef4444; margin-top: 15px; margin-bottom: 0;"></p>
+        </div>
+
+        <!-- Dashboard Card -->
+        <div id="dashboard-view" class="glass-card animate-fade-in hidden">
+            <h1>Dashboard</h1>
+            <p class="subtitle">Manage and Sync your Proxy Data</p>
+
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-label">Session</div>
+                    <div class="stat-value" style="color: #10b981;">Active</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Connected</div>
+                    <div class="stat-value">Apigee CLI</div>
+                </div>
+            </div>
+
+            <button id="gen-token-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path
+                        d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3m-3-3l-2.25-2.25" />
+                </svg>
+                <span>Generate New Token</span>
+                <div id="gen-loader" class="loader hidden"></div>
+            </button>
+
+            <div id="token-display" class="hidden">
+                <div class="stat-label" style="margin-top: 20px;">Current Access Token</div>
+                <div id="token-box" class="token-container" hidden></div>
+
+                <button id="save-btn" class="animate-fade-in">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="7 10 12 15 17 10" />
+                        <line x1="12" y1="15" x2="12" y2="3" />
+                    </svg>
+                    <span>Generate & Save Data</span>
+                    <div id="save-loader" class="loader hidden"></div>
+                </button>
+            </div>
+
+            <!-- Results Table -->
+            <div id="results-container" class="hidden animate-fade-in" style="margin-top: 30px;">
+                <div class="stat-label">Synced Proxies</div>
+                <div class="table-wrapper">
+                    <table id="proxy-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Proxy Name</th>
+                                <th>Timestamp</th>
+                            </tr>
+                        </thead>
+                        <tbody id="proxy-list">
+                            <!-- Data will be injected here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="status-indicator">
+                <div id="status-dot" class="dot"></div>
+                <span id="status-text" style="color: var(--text-dim)">Ready to sync</span>
+            </div>
+
+            <button id="logout-btn"
+                style="background: transparent; border: 1px solid rgba(255,255,255,0.1); margin-top: 30px; font-size: 0.8rem;">
+                Logout
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
